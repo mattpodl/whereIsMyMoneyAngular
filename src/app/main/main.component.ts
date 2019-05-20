@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {Expense} from '../services/expense';
+import {HttpService} from '../services/http.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
+  allExpenses$: Observable<Array<Expense>>;
+
 
   ngOnInit() {
+    this.allExpenses$ = this.httpService.expenses$;
   }
 
 }

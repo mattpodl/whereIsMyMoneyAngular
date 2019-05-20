@@ -1,3 +1,22 @@
-<p>
-  main works!
-</p>
+<table class="table w-100">
+  <thead class="table-hover">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">date</th>
+    <th scope="col">description</th>
+    <th scope="col">amount</th>
+    <th scope="col">category</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let e of allExpenses$ | async">
+    <th scope="row">{{e.id}}</th>
+    <td>{{e.date}}</td>
+    <td>{{e.description}}</td>
+    <td>{{e.amount}}</td>
+    <td>{{e.categoryId}}</td>
+  </tr>
+
+  </tbody>
+</table>
+
+<app-main-expenses-add></app-main-expenses-add>
