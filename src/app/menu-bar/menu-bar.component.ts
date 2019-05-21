@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
-import {HttpService} from '../services/http.service';
-import {Expense} from '../services/expense'
 
 @Component({
   selector: 'app-menu-bar',
@@ -10,17 +7,9 @@ import {Expense} from '../services/expense'
 })
 export class MenuBarComponent implements OnInit {
 
-  constructor(private httpService: HttpService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.allExpenses$ = this.httpService.expenses$;
-  }
-
-  allExpenses$: Observable<Array<Expense>>;
-
-
-  getAll() {
-
   }
 
 }

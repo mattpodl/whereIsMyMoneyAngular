@@ -1,3 +1,15 @@
-<p>
-  main-categories-add works!
-</p>
+<form [formGroup]="categoryData" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Opis</label>
+    <input type="text" class="form-control" id="name"
+           formControlName="name" placeholder="Podaj opis wydatku.">
+  </div>
+  <div
+    *ngIf="categoryData.controls['name'].invalid && (categoryData.controls['name'].dirty || categoryData.controls['name'].touched)"
+    class="alert alert-danger"> Nazwa powinna posiadać od 4 do 10 znaków.
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!categoryData.valid">Submit</button>
+
+
+</form>
+

@@ -1,3 +1,24 @@
-<p>
-  main-expenses works!
-</p>
+<table class="table w-100">
+  <thead class="table-hover">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">date</th>
+    <th scope="col">description</th>
+    <th scope="col">amount</th>
+    <th scope="col">category</th>
+    <th scope="col">remove</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let e of allExpenses$ | async">
+    <th scope="row">{{e.id}}</th>
+    <td>{{e.date}}</td>
+    <td>{{e.description}}</td>
+    <td>{{e.amount}}</td>
+    <td>{{e.category.name}}</td>
+    <td><button class="btn-outline-danger" (click)="remove(e)">delete</button></td>
+  </tr>
+
+  </tbody>
+</table>
+<button (click)="reload()">reload</button>
+<app-main-expenses-add></app-main-expenses-add>

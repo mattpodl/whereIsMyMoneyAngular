@@ -1,3 +1,14 @@
-<p>
-  main-categories works!
-</p>
+<table class="table w-100">
+  <thead class="table-hover">
+  <tr>
+    <th scope="col">description</th>
+    <th scope="col">remove</th>
+  </tr>
+  <tbody>
+<tr *ngFor="let c of allCategories$ | async">
+  <td>{{c.name}}</td>
+  <td><button class="btn-outline-danger" (click)="removeCategory(c.id)">delete</button> </td>
+</tr>
+</tbody>
+</table>
+<app-main-categories-add></app-main-categories-add>

@@ -9,11 +9,11 @@ import {MainModule} from './main/main.module';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
-import {HttpService} from './services/http.service';
+import {ExpenseHttpService} from './services/expense-http.service';
 import {SpyInterceptor} from './services/spy.interceptor';
 import {AuthInterceptor} from './services/auth.interceptor';
 import {AppRoutingModule} from './app-routing/app-routing.component';
-
+import {CategoryHttpService} from './services/category.http.service';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import {AppRoutingModule} from './app-routing/app-routing.component';
     MainModule,
     AppRoutingModule,
   ],
-  providers: [HttpService,
+  providers: [ExpenseHttpService, CategoryHttpService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SpyInterceptor,

@@ -1,23 +1,25 @@
-<form>
+<form [formGroup]="expenseData" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="description">Opis</label>
-    <input type="text" class="form-control" id="description" placeholder="Podaj opis wydatku.">
+    <input type="text" class="form-control" id="description"
+           formControlName="description" placeholder="Podaj opis wydatku.">
 
     <label for="amount">Kwota</label>
-    <div class="form-row">
-          <input class="form-control" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" id="amount"
-                 placeholder="Podaj kwote w złotych">
-        </div>
+
+    <input class="form-control" type="number" step="0.01" value="" id="amount"
+           formControlName="amount" placeholder="Podaj kwote w złotych">
+
     <label for="date">Data</label>
-    <input type="date" class="form-control" id="date">
+    <input type="date" class="form-control" id="date" formControlName="date">
+
     <label for="category">Kategoria</label>
-    <div class="form-group" >
-      <select class="custom-select" id="category">
-        <!--        <option *ngFor="let e of allExpenses$ | async" [value]="e.categoryId" value="{{e.categoryId}}">{{e.categoryId}}</option>-->
+    <div class="form-group">
+      <select class="custom-select" id="category" formControlName="categoryId">
+        <option *ngFor="let c of allCategories$ | async" value="{{c.id}}">{{c.name}}</option>
       </select>
 
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!expenseData.valid">Submit</button>
   </div>
 </form>
 
